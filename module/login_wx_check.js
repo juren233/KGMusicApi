@@ -5,7 +5,7 @@ module.exports = (params, useAxios) => {
   const answer = { status: 500, body: {}, cookie: [] };
   return new Promise(async (resolve, reject) => {
     try {
-      const resp = await axios({ url: `https://long.open.weixin.qq.com/connect/l/qrconnect?f=json&uuid=${params?.uuid || ''}` });
+      const resp = await axios({ url: `https://long.open.weixin.qq.com/connect/l/qrconnect?f=json&uuid=${params?.uuid || ''}`, withCredentials: true });
 
       answer.status = 200;
       answer.body = resp.data;

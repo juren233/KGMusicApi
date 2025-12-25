@@ -19,6 +19,7 @@ const assetsToken = (code) => {
     url: 'https://api.weixin.qq.com/sns/oauth2/access_token',
     method: 'POST',
     params: { secret, appid, code, grant_type: 'authorization_code' },
+    withCredentials: true,
   });
 };
 
