@@ -23,7 +23,10 @@
     "pkgwin": "pkg . -t node14-win-x64 -C GZip -o bin/app_win --no-bytecode",
     "pkglinux": "pkg . -t node14-linux-x64 -C GZip -o bin/app_linux --no-bytecode",
     "pkgmacos": "pkg . -t node14-macos-x64 -C GZip -o bin/app_macos --no-bytecode",
-    "pkgjs": "esbuild index.js --bundle --minify --outfile=bin/api_js/app.js --platform=node && mkdir -p bin/api_js/util bin/api_js/module && esbuild util/*.js --bundle --minify --outdir=bin/api_js/util --platform=node && esbuild module/*.js --bundle --minify --outdir=bin/api_js/module --platform=node"
+    "pkgjs": "esbuild index.js --bundle --minify --outfile=bin/api_js/app.js --platform=node && mkdir -p bin/api_js/util bin/api_js/module && esbuild util/*.js --bundle --minify --outdir=bin/api_js/util --platform=node && esbuild module/*.js --bundle --minify --outdir=bin/api_js/module --platform=node",
+    "generate:worker": "node scripts/generate_worker.js",
+    "dev:worker": "npm run generate:worker && node node_modules/wrangler/bin/wrangler.js dev worker/index.js",
+    "deploy:worker": "npm run generate:worker && node node_modules/wrangler/bin/wrangler.js deploy worker/index.js"
   },
   "engines": {
     "node": ">=12"
@@ -45,7 +48,9 @@
     "pkg": "^5.8.1",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "hono": "^4.6.14",
+    "wrangler": "^3.99.0"
   },
   "dependencies": {
     "axios": "^1.1.3",

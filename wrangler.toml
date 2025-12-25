@@ -1,0 +1,7 @@
+name = "kgmusicapi-worker"
+main = "worker/index.js"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[define]
+"process.env.platform" = "\"android\""
